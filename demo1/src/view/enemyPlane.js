@@ -1,4 +1,4 @@
-敌机类
+//敌机类
 var enemy = cc.Sprite.extend({
     sp:null,
     //敌机种类

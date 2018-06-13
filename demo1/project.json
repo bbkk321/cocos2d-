@@ -16,6 +16,7 @@
         "src/view/demo.js",
         "src/view/enemyPlane.js",
         "src/view/hero.js",
+        "src/util/runActionHelper.js",
         "src/app.js"
     ]
 }
