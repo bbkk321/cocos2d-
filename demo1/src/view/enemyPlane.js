@@ -22,8 +22,11 @@ var enemy = cc.Sprite.extend({
         __id = 0;
     },
 
-    shot:function(){
-
+    setData:function(_planeType,_hp,_speed,___id){
+        this.planeType = _planeType;
+        this.hp = _hp;
+        this.speed = _speed;
+        this.__id = ___id;
     },
 
 

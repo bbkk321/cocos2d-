@@ -147,9 +147,9 @@ var mainLayer = cc.Layer.extend({
     //背景滚动
     backgrouneScroll:function(){
         adjustmentBG--;
-        if(adjustmentBG<=0)adjustmentBG = 1334;
+        if(adjustmentBG<=0)adjustmentBG = size.height;;
         this.bg1.setPosition(size.width / 2, adjustmentBG);
-        this.bg2.setPosition(size.width / 2, adjustmentBG-1334);
+        this.bg2.setPosition(size.width / 2, adjustmentBG-size.height+2);
     },
     //添加飞机
     addFoePlane:function(){
@@ -193,10 +193,7 @@ var mainLayer = cc.Layer.extend({
         }
         var runAHelper = new RunActionHelper();
         var animate = runAHelper.createAnimationByPlist(bigFoePlaneActionArray, 0.1);
-        bigFoePlane.planeType = 2;
-        bigFoePlane.hp = 10;
-        bigFoePlane.speed = Math.random()*1+1;
-        bigFoePlane.__id = __cnt++;
+        bigFoePlane.setData(2,10,Math.random()*1+1,++__cnt);
         bigFoePlane.runAction(animate.repeatForever());
         return bigFoePlane;
     },
@@ -204,20 +201,14 @@ var mainLayer = cc.Layer.extend({
     makeMediumFoePlane:function () {
         var mediumFoePlane = new enemy("enemy3_fly_1.png");
         mediumFoePlane.setPosition(cc.p(Math.random()*size.width,size.height));
-        mediumFoePlane.planeType=3;
-        mediumFoePlane.hp = 5;
-        mediumFoePlane.speed = Math.random()*1+2;
-        mediumFoePlane.__id = __cnt++;
+        mediumFoePlane.setData(3,5,Math.random()*1+2,++__cnt);
         return mediumFoePlane;
     },
     //造小飞机
     makeSmallFoePlane:function () {
         var smallFoePlane = new enemy("enemy1_fly_1.png");
         smallFoePlane.setPosition(cc.p(Math.random()*size.width,size.height));
-        smallFoePlane.planeType=1;
-        smallFoePlane.hp=1;
-        smallFoePlane.speed=Math.random()*2+2;
-        smallFoePlane.__id = __cnt++;
+        smallFoePlane.setData(1,1,Math.random()*2+2,++__cnt);
         return smallFoePlane;
     },
     //发射子弹
@@ -274,7 +265,7 @@ var mainLayer = cc.Layer.extend({
                 //cc.log("碰撞了！");
                 this.resetBullet();
                 foePlane.hp -= (isBigBullet?2:1);
-                //this.fowPlaneHitAnimation(foePlane);
+                this.fowPlaneHitAnimation(foePlane);
                 if(foePlane.hp<=0){
                     this.fowPlaneBlowupAnimation(foePlane);
                     this.enemyArr.splice(i,1)
@@ -341,6 +332,7 @@ var mainLayer = cc.Layer.extend({
             var frame = cc.spriteFrameCache.getSpriteFrame("enemy"+foePlane.planeType+"_blowup_" + i + ".png");
             arr.push(frame)
         }
+        foePlane.removeAllChildren();
         var runAHelper = new RunActionHelper();
         var animate = runAHelper.createAnimationByPlist(arr, 0.1);
         foePlane.runAction(cc.sequence(animate,cc.callFunc(this.blowupEnd,this,foePlane)));
