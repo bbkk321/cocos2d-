@@ -6,6 +6,7 @@ var mainLayer = cc.Layer.extend({
     plane:null,
     enemy:null,
     _bullet:null,
+    bulletArr:[],
     adjustmentBG:null,
     size:null,
     bigPlan:null,
@@ -17,6 +18,7 @@ var mainLayer = cc.Layer.extend({
     isChangeBullet:null,
     bulletSpeed:null,
     bulletTiming:null,
+    bulletTime:null,
     isGameOver:null,
     ctor:function(){
         this._super();
@@ -46,14 +48,15 @@ var mainLayer = cc.Layer.extend({
         mediumPlan = 0;
         isBigBullet = false;
         isChangeBullet = false;
-        bulletSpeed = 0;
+        bulletSpeed = 10;
         bulletTiming = 0;
+        this.bulletTime = 0;
         isGameOver = false;
         enemyArr = [];
     },
     //加载资源
     getUI:function(){
-        spriteFrameCache.addSpriteFrames(res.gameArts_plist, res.gameArts_png);
+        AssetManager.getSingle().addSpriteFramesGameArts();
         //加载背景
         var bgName = "background_2.png";
         this.bg1 = new cc.Sprite(spriteFrameCache.getSpriteFrame(bgName));
@@ -67,7 +70,7 @@ var mainLayer = cc.Layer.extend({
         this.bg2 = new cc.Sprite(spriteFrameCache.getSpriteFrame(bgName));
         this.bg2.scaleX = sX;
         this.bg2.scaleY = sY;
-        this.bg2.setAnchorPoint(0.5,0)
+        this.bg2.setAnchorPoint(0.5,0);
         this.bg2.setPosition(size.width / 2,size.height+adjustmentBG);
         this.addChild(this.bg2, 0);
 
@@ -90,8 +93,6 @@ var mainLayer = cc.Layer.extend({
         //cc.log("onTouchMoved");
         var touchLocation = this.convertTouchToNodeSpace(touch);
         var oldTouchLocation = touch.getPreviousLocationInView();
-        oldTouchLocation = cc.director.convertToGL(oldTouchLocation);
-        oldTouchLocation = this.convertToNodeSpace(oldTouchLocation);
         var translation = cc.pSub(touchLocation,oldTouchLocation);
         this.panForTranslation(translation);
         return true;
@@ -113,10 +114,9 @@ var mainLayer = cc.Layer.extend({
         }else if (retval.x<=33) {
             retval.x = 33;
         }
-
-        if (retval.y >=this.plane.height) {
-            retval.y = this.plane.height;
-        }else if (retval.y <= 43) {
+        if(retval.y>size.height-this.plane.height){
+            retval.y = size.height-this.plane.height;
+        }else if(retval.y<=43){
             retval.y = 43;
         }
         //cc.log("retval.x = "+retval.x,"retval.y = "+retval.y);
@@ -129,7 +129,7 @@ var mainLayer = cc.Layer.extend({
             foePlane.setPosition(cc.p(foePlane.getPositionX(),foePlane.getPositionY()-foePlane.speed));
             if(foePlane.y<-foePlane.height){
                 foePlane.stopAllActions();
-                this.enemyArr.splice(i,1)
+                this.enemyArr.splice(i,1);
                 foePlane.removeFromParent();
             }
         }
@@ -147,7 +147,7 @@ var mainLayer = cc.Layer.extend({
     //背景滚动
     backgrouneScroll:function(){
         adjustmentBG--;
-        if(adjustmentBG<=0)adjustmentBG = size.height;;
+        if(adjustmentBG<=0)adjustmentBG = size.height;
         this.bg1.setPosition(size.width / 2, adjustmentBG);
         this.bg2.setPosition(size.width / 2, adjustmentBG-size.height+2);
     },
@@ -213,33 +213,37 @@ var mainLayer = cc.Layer.extend({
     },
     //发射子弹
     firingBullets:function(){
-        this._bullet.setPosition(cc.p(this._bullet.getPositionX(),this._bullet.getPositionY()+bulletSpeed));
-        if (this._bullet.getPositionY()>size.height-20) {
-            //[self resetBullet];
-            this.resetBullet();
+        for(var j=0;j<this.bulletArr.length;j++){
+            this.bulletArr[j].setPosition(cc.p(this.bulletArr[j].getPositionX(),this.bulletArr[j].getPositionY()+bulletSpeed));
+        }
+        this.bulletTime++;
+        cc.log("子弹间隔1："+this.bulletTime);
+        if(this.bulletTime > 20){
+            cc.log("子弹间隔2："+this.bulletTime);
+            this.bulletTime = 0;
+            this.madeBullet();
+        }
+        for(var i=this.bulletArr.length-1;i>0;i--){
+            if(this.bulletArr[i].getPositionY()>size.height-20){
+                this.resetBullet(i);
+            }
         }
     },
     // 子弹还原
-    resetBullet:function(){
-        if ((isBigBullet&&isChangeBullet)||(!isBigBullet&&isChangeBullet)) {
-            this._bullet.removeFromParent();
-            this.madeBullet();
-            isChangeBullet = false;
-        }
-
-        bulletSpeed = (460-(this.plane.getPositionY() + 50))/15;
-        if (bulletSpeed<5)
-        {
-            bulletSpeed=5;
-        }
-        this._bullet.setPosition(cc.p(this.plane.getPositionX(),this.plane.getPositionY()+50));
+    resetBullet:function(index){
+        if(!index) return;
+        var bullet = this.bulletArr[index];
+        this.removeChild(bullet);
+        this.bulletArr.splice(index,1);
+        //isChangeBullet = false;
     },
     //制造子弹
     madeBullet:function () {
-        this._bullet = new cc.Sprite(spriteFrameCache.getSpriteFrame((!isBigBullet)?"bullet1.png":"bullet2.png"));
-        this._bullet.setAnchorPoint(cc.p(0.5,0.5));
-        this.addChild(this._bullet);
-        this._bullet.scaleX = this._bullet.scaleY = 1.3;
+        var bullet = new Bullet((!isBigBullet)?"bullet1.png":"bullet2.png");
+        this.addChild(bullet);
+        bullet.scaleX = bullet.scaleY = 1.3;
+        bullet.setPosition(cc.p(this.plane.getPositionX(),this.plane.getPositionY()+50));
+        this.bulletArr.push(bullet);
     },
     //子弹时间
     bulletTimingFn:function () {
@@ -256,23 +260,25 @@ var mainLayer = cc.Layer.extend({
     //碰撞检测
     collisionDetection:function () {
         // 子弹跟敌机
-        var bulletRec = this._bullet.getBoundingBox();
-        for(var i=0;i<this.enemyArr.length;i++){
-            var foePlane = this.enemyArr[i];
-            var foePlaneRec = foePlane.getBoundingBox();
-            //cc.log("foePlaneRec.x = "+foePlaneRec.x,"foePlaneRec.y = "+foePlaneRec.y,"foePlaneRec.width = "+foePlaneRec.width,"foePlaneRec.height = "+foePlaneRec.height);
-            if(cc.rectIntersectsRect(bulletRec,foePlaneRec)){
-                //cc.log("碰撞了！");
-                this.resetBullet();
-                foePlane.hp -= (isBigBullet?2:1);
-                this.fowPlaneHitAnimation(foePlane);
-                if(foePlane.hp<=0){
-                    this.fowPlaneBlowupAnimation(foePlane);
-                    this.enemyArr.splice(i,1)
+        for(var j=0;j<this.bulletArr.length;j++){
+            var bulletRec = this.bulletArr[j].getBoundingBox();
+            for(var i=0;i<this.enemyArr.length;i++){
+                var foePlane = this.enemyArr[i];
+                var foePlaneRec = foePlane.getBoundingBox();
+                //cc.log("foePlaneRec.x = "+foePlaneRec.x,"foePlaneRec.y = "+foePlaneRec.y,"foePlaneRec.width = "+foePlaneRec.width,"foePlaneRec.height = "+foePlaneRec.height);
+                if(cc.rectIntersectsRect(bulletRec,foePlaneRec)){
+                    //cc.log("碰撞了！");
+                    this.resetBullet(j);
+                    foePlane.hp -= (isBigBullet?2:1);
+                    this.fowPlaneHitAnimation(foePlane);
+                    if(foePlane.hp<=0){
+                        this.fowPlaneBlowupAnimation(foePlane);
+                        this.enemyArr.splice(i,1)
+                    }
                 }
             }
         }
-        //飞机跟打飞机
+        //主角跟敌机
         var planeRec = this.plane.getBoundingBox();
         for(i=0;i<this.enemyArr.length;i++){
             var foePlane = this.enemyArr[i];
@@ -296,7 +302,7 @@ var mainLayer = cc.Layer.extend({
                 var runAHelper = new RunActionHelper();
                 var animate = runAHelper.createAnimationByPlist(arr, 0.1);
                 foePlane.stopAllActions();
-                foePlane.runAction(animate.repeatForever());
+                foePlane.runAction(animate);
             }
         } else if (foePlane.planeType == 2) {
             if (foePlane.hp <= 3) {
@@ -308,7 +314,7 @@ var mainLayer = cc.Layer.extend({
                 var runAHelper = new RunActionHelper();
                 var animate = runAHelper.createAnimationByPlist(arr2, 0.1);
                 foePlane.stopAllActions();
-                foePlane.runAction(animate.repeatForever());
+                foePlane.runAction(animate);
             }
         }
     },

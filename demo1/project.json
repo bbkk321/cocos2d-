@@ -12,11 +12,13 @@
     "modules" : ["cocos2d"],
 
     "jsList" : [
-        "src/resource.js",
+        "src/global/AssetManager.js",
         "src/view/demo.js",
         "src/view/enemyPlane.js",
         "src/view/hero.js",
+        "src/view/bullet.js",
         "src/util/runActionHelper.js",
+        "src/resource.js",
         "src/app.js"
     ]
 }
