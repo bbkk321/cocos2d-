@@ -16,7 +16,7 @@ var heroPlane = cc.Sprite.extend({
         sp.setAnchorPoint(cc.p(0,0));
         this.width = sp.width;
         this.height = sp.height;
-        this.scaleX = this.scaleY = 1.3;
+        this.scaleX = this.scaleY = Global.getSingle().GLOBAL_SCALE;
         this.runAction(animate.repeatForever());
     },
 });

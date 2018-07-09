@@ -16,12 +16,13 @@ var HelloWorldLayer = cc.Layer.extend({
         // 3. add your codes below...
         // add a label shows "Hello World"
         // create and initialize a label
-        var helloLabel = new cc.LabelTTF("微信飞机大战", "Arial", 38);
+        //var helloLabel = new cc.LabelTTF("微信飞机大战", "Marker Felt", 38);
+        //helloLabel.setColor(cc.color(0,0,0));
         // position the label on the center of the screen
-        helloLabel.x = size.width / 2;
-        helloLabel.y = size.height - helloLabel.height;
+        //helloLabel.x = size.width / 2;
+        //helloLabel.y = size.height - helloLabel.height;
         // add the label as a child to this layer
-        this.addChild(helloLabel, 5);
+        //this.addChild(helloLabel, 5);
 
         // add "HelloWorld" splash screen"
         var demo = new mainLayer();

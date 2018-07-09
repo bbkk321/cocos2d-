@@ -75,7 +75,7 @@ var mainLayer = cc.Layer.extend({
         this.addChild(this.bg2, 0);
 
         //加载积分榜
-        this.scoreLabel = new cc.LabelTTF("0000", "MarkerFelt-Thin", 38);
+        this.scoreLabel = new cc.LabelTTF("0000", "Marker Felt", 38);
         this.scoreLabel.setColor(cc.color(0,0,0));
         this.scoreLabel.setAnchorPoint(cc.p(0,1));
         this.scoreLabel.setPosition(cc.p(10, size.height-10));
@@ -119,7 +119,6 @@ var mainLayer = cc.Layer.extend({
         }else if(retval.y<=43){
             retval.y = 43;
         }
-        //cc.log("retval.x = "+retval.x,"retval.y = "+retval.y);
         return retval;
     },
     //移动飞机
@@ -159,7 +158,7 @@ var mainLayer = cc.Layer.extend({
         if (bigPlan>500) {
             var foePlane = this.makeBigFoePlane();
             this.addChild(foePlane,3);
-            foePlane.scaleX = foePlane.scaleY = 1.3;
+            foePlane.scaleX = foePlane.scaleY = Global.getSingle().GLOBAL_SCALE;
             this.enemyArr.push(foePlane);
             bigPlan = 0;
         }
@@ -167,7 +166,7 @@ var mainLayer = cc.Layer.extend({
         if (mediumPlan>400) {
             var foePlane = this.makeMediumFoePlane();
             this.addChild(foePlane,3);
-            foePlane.scaleX = foePlane.scaleY = 1.3;
+            foePlane.scaleX = foePlane.scaleY = Global.getSingle().GLOBAL_SCALE;
             this.enemyArr.push(foePlane);
             mediumPlan = 0;
         }
@@ -175,7 +174,7 @@ var mainLayer = cc.Layer.extend({
         if (smallPlan>45) {
             var foePlane = this.makeSmallFoePlane();
             this.addChild(foePlane,3);
-            foePlane.scaleX = foePlane.scaleY = 1.3;
+            foePlane.scaleX = foePlane.scaleY = Global.getSingle().GLOBAL_SCALE;
             this.enemyArr.push(foePlane);
             smallPlan = 0;
         }
@@ -241,7 +240,7 @@ var mainLayer = cc.Layer.extend({
     madeBullet:function () {
         var bullet = new Bullet((!isBigBullet)?"bullet1.png":"bullet2.png");
         this.addChild(bullet);
-        bullet.scaleX = bullet.scaleY = 1.3;
+        bullet.scaleX = bullet.scaleY = Global.getSingle().GLOBAL_SCALE;
         bullet.setPosition(cc.p(this.plane.getPositionX(),this.plane.getPositionY()+50));
         this.bulletArr.push(bullet);
     },
@@ -280,13 +279,14 @@ var mainLayer = cc.Layer.extend({
         }
         //主角跟敌机
         var planeRec = this.plane.getBoundingBox();
-        for(i=0;i<this.enemyArr.length;i++){
-            var foePlane = this.enemyArr[i];
+        for(var k=0;k<this.enemyArr.length;k++){
+            var foePlane = this.enemyArr[k];
             var foePlaneRec = foePlane.getBoundingBox();
             if(cc.rectIntersectsRect(planeRec,foePlaneRec)){
                 this.playerBlowupAnimation();
-                this.fowPlaneBlowupAnimation(foePlane);// 同归于尽
-                this.enemyArr.splice(i,1);
+                //this.fowPlaneBlowupAnimation(foePlane);// 同归于尽
+                //this.enemyArr.splice(k,1);
+                cc.log("")
             }
         }
     },
@@ -356,6 +356,7 @@ var mainLayer = cc.Layer.extend({
             var frame = cc.spriteFrameCache.getSpriteFrame("hero_blowup_" + i + ".png");
             arr.push(frame)
         }
+        //this.plane.removeAllChildren();
         var runAHelper = new RunActionHelper();
         var animate = runAHelper.createAnimationByPlist(arr, 0.1);
         this.plane.runAction(cc.sequence(animate,cc.callFunc(this.blowupEnd,this,this.plane)));
@@ -363,7 +364,7 @@ var mainLayer = cc.Layer.extend({
     //游戏结束
     gameOver:function () {
         isGameOver = true;
-        for(i=0;i<this.enemyArr.length;i++){
+        for(var i=0;i<this.enemyArr.length;i++){
             var foePlane = this.enemyArr[i];
             foePlane.stopAllActions();
         }

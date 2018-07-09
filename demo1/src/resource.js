@@ -14,7 +14,12 @@ var g_resources = [
     res.gameArts_plist,
     res.gameArts_png,
     res.gameArts_hd_plist,
-    res.gameArts_hd_png
+    res.gameArts_hd_png,
+    {
+        type:"font",
+        name:"Marker Felt",
+        srcs:["res/font/MarkerFelt.ttf"]
+    }
 ];
 for (var i in res) {
     g_resources.push(res[i]);
