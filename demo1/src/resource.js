@@ -1,20 +1,16 @@
 var res = {
-    HelloWorld_png : "res/HelloWorld.png",
     gameArts_plist:"res/gameArts.plist",
     gameArts_png:"res/gameArts.png",
     gameArts_hd_plist:"res/gameArts-hd.plist",
-    gameArts_hd_png:"res/gameArts-hd.png"
-    //bg_png:"background_2.png",
-    //plane_png:"hero_fly_1.png",
-    //enemy_png:"enemy1_fly_1.png",
-    //bullet_png:"bullet1.png",
+    gameArts_hd_png:"res/gameArts-hd.png",
+};
+var res_json = {
+    startLayer_json:"res/StartLayer.json",
+    pauseLayer_json:"res/PauseLayer.json",
+    planeScene_json:"res/PlaneScene.json"
 };
 
 var g_resources = [
-    res.gameArts_plist,
-    res.gameArts_png,
-    res.gameArts_hd_plist,
-    res.gameArts_hd_png,
     {
         type:"font",
         name:"Marker Felt",
@@ -23,4 +19,7 @@ var g_resources = [
 ];
 for (var i in res) {
     g_resources.push(res[i]);
+}
+for(var j in res_json){
+    g_resources.push(res_json[j]);
 }

@@ -1,5 +1,4 @@
-//游戏主场景
-var mainLayer = cc.Layer.extend({
+var MainController = MainView.extend({
     __cnt:null,
     bg1:null,
     score:null,
@@ -20,24 +19,13 @@ var mainLayer = cc.Layer.extend({
     bulletTiming:null,
     bulletTime:null,
     isGameOver:null,
-    ctor:function(){
+    isPause:false,
+    isStart:false,
+    ctor:function () {
         this._super();
         size = cc.winSize;
         adjustmentBG = 0;
         spriteFrameCache = cc.spriteFrameCache;
-        this.initData();
-        this.getUI();
-        this.madeBullet();
-        this.resetBullet();
-        this.scheduleUpdate();
-        // 添加屏幕触摸事件
-        cc.eventManager.addListener({
-            event: cc.EventListener.TOUCH_ONE_BY_ONE,
-            swallowTouches: true,
-            onTouchBegan: this.touchbegan.bind(this),
-            onTouchMoved: this.touchmoved.bind(this),
-            onTouchEnded: this.touchended.bind(this)
-        }, this);
         return true;
     },
     initData:function(){
@@ -52,45 +40,54 @@ var mainLayer = cc.Layer.extend({
         bulletTiming = 0;
         this.bulletTime = 0;
         isGameOver = false;
+        isPause = false;
+        isStart = false;
         enemyArr = [];
     },
-    //加载资源
-    getUI:function(){
-        AssetManager.getSingle().addSpriteFramesGameArts();
-        //加载背景
-        var bgName = "background_2.png";
-        this.bg1 = new cc.Sprite(spriteFrameCache.getSpriteFrame(bgName));
-        var sX = size.width/this.bg1.width;
-        var sY = size.height/this.bg1.height;
-        this.bg1.scaleX = sX;
-        this.bg1.scaleY = sY;
-        this.bg1.setAnchorPoint(0.5,0);
-        this.bg1.setPosition(size.width / 2,adjustmentBG);
-        this.addChild(this.bg1, 0);
-        this.bg2 = new cc.Sprite(spriteFrameCache.getSpriteFrame(bgName));
-        this.bg2.scaleX = sX;
-        this.bg2.scaleY = sY;
-        this.bg2.setAnchorPoint(0.5,0);
-        this.bg2.setPosition(size.width / 2,size.height+adjustmentBG);
-        this.addChild(this.bg2, 0);
-
-        //加载积分榜
-        this.scoreLabel = new cc.LabelTTF("0000", "Marker Felt", 38);
-        this.scoreLabel.setColor(cc.color(0,0,0));
-        this.scoreLabel.setAnchorPoint(cc.p(0,1));
-        this.scoreLabel.setPosition(cc.p(10, size.height-10));
-        this.addChild(this.scoreLabel,4);
+    addEvent:function () {
+        this._super();
+        cc.loader.load(res_json.startLayer_json,function () {
+            var layer = new StartLayer();
+            this.addChild(layer,100);
+        }.bind(this));
+        Global.getSingle().getCustomEvent(COUSTOM_EVNET.START,this.startEvent.bind(this));
+        this.initData();
+        this.scheduleUpdate();
+    },
+    startEvent:function(){
+        // 添加屏幕触摸事件
+        cc.eventManager.addListener({
+            event: cc.EventListener.TOUCH_ONE_BY_ONE,
+            swallowTouches: true,
+            onTouchBegan: this.touchbegan.bind(this),
+            onTouchMoved: this.touchmoved.bind(this),
+            onTouchEnded: this.touchended.bind(this)
+        }, this);
+        this.Panel_UI.setVisible(true);
+        this.getHero();
+        isStart = true;
+    },
+    update:function (dt) {
+        this.backgrouneScroll();
+        //cc.log("isStart = "+isStart);
+        if(isStart){
+            //this.moveFoePlane();
+        }
+    },
+    //初始化主角
+    getHero:function(){
         //加载友军飞机
         this.plane = new heroPlane();
         this.plane.setPosition(size.width/2,this.plane.height);
-        this.addChild(this.plane,3);
+        this.Panel_CONTENT.addChild(this.plane,3);
     },
     touchbegan:function (touch, event) {
-        //cc.log("onTouchBegan");
+        cc.log("onTouchBegan");
         return true;
     },
     touchmoved:function (touch, event) {
-        //cc.log("onTouchMoved");
+        cc.log("onTouchMoved");
+        if(isPause) return false;
         var touchLocation = this.convertTouchToNodeSpace(touch);
         var oldTouchLocation = touch.getPreviousLocationInView();
         var translation = cc.pSub(touchLocation,oldTouchLocation);
@@ -98,11 +95,12 @@ var mainLayer = cc.Layer.extend({
         return true;
     },
     touchended:function (touch, event) {
-        //cc.log("touchended");
+        cc.log("touchended");
         return true;
     },
     panForTranslation:function(translation){
         if(isGameOver) return;
+        cc.log("pos = "+this.boundLayerPos(translation).x,this.boundLayerPos(translation).y)
         this.plane.setPosition(this.boundLayerPos(translation));
     },
     boundLayerPos:function(newPos){
@@ -134,7 +132,7 @@ var mainLayer = cc.Layer.extend({
         }
 
     },
-    update:function (dt) {
+    /*update:function (dt) {
         if(isGameOver) return;
         this.backgrouneScroll();
         this.firingBullets();
@@ -142,16 +140,16 @@ var mainLayer = cc.Layer.extend({
         this.moveFoePlane();
         this.collisionDetection();
         this.bulletTimingFn();
-    },
+    },*/
     //背景滚动
     backgrouneScroll:function(){
         adjustmentBG--;
         if(adjustmentBG<=0)adjustmentBG = size.height;
-        this.bg1.setPosition(size.width / 2, adjustmentBG);
-        this.bg2.setPosition(size.width / 2, adjustmentBG-size.height+2);
+        this.IMG_BG1.setPosition(0, adjustmentBG);
+        this.IMG_BG2.setPosition(0, adjustmentBG-size.height+2);
     },
     //添加飞机
-    addFoePlane:function(){
+    /*addFoePlane:function(){
         bigPlan++;
         smallPlan++;
         mediumPlan++;
@@ -216,9 +214,7 @@ var mainLayer = cc.Layer.extend({
             this.bulletArr[j].setPosition(cc.p(this.bulletArr[j].getPositionX(),this.bulletArr[j].getPositionY()+bulletSpeed));
         }
         this.bulletTime++;
-        cc.log("子弹间隔1："+this.bulletTime);
         if(this.bulletTime > 20){
-            cc.log("子弹间隔2："+this.bulletTime);
             this.bulletTime = 0;
             this.madeBullet();
         }
@@ -390,5 +386,5 @@ var mainLayer = cc.Layer.extend({
         this.getUI();
         this.madeBullet();
         this.resetBullet();
-    }
+    }*/
 });

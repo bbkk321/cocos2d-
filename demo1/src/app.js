@@ -10,7 +10,7 @@ var HelloWorldLayer = cc.Layer.extend({
         // 2. add a menu item with "X" image, which is clicked to quit the program
         //    you may modify it.
         // ask the window size
-        var size = cc.winSize;cc.visibleRect
+        var size = cc.winSize;
 
         /////////////////////////////
         // 3. add your codes below...
@@ -25,9 +25,15 @@ var HelloWorldLayer = cc.Layer.extend({
         //this.addChild(helloLabel, 5);
 
         // add "HelloWorld" splash screen"
-        var demo = new mainLayer();
-        this.addChild(demo,0);
+        //var demo = new mainLayer();
+        //this.addChild(demo,0);
 
+        var mainscene = new MainScene();
+        cc.loader.load(res_json.planeScene_json,function () {
+            var main = new MainController();
+            mainscene.addChild(main);
+            cc.director.runScene(mainscene);
+        });
         return true;
     }
 });
@@ -37,6 +43,18 @@ var HelloWorldScene = cc.Scene.extend({
         this._super();
         var layer = new HelloWorldLayer();
         this.addChild(layer);
+    }
+});
+var MainScene = cc.Scene.extend({
+    ctor:function(){
+        this._super();
+        return true;
+    },
+    onEnter:function () {
+        this._super();
+    },
+    onEnterTransitionDidFinish:function(){
+        this._super();
     }
 });
 

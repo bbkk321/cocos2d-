@@ -1,0 +1,246 @@
+{
+  "ID": "c1c02bae-8099-420c-95fe-00663b744a38",
+  "Version": "3.10.0.0",
+  "Name": "StartLayer",
+  "Content": {
+    "Content": {
+      "Animation": {
+        "Duration": 0,
+        "Speed": 1.0,
+        "Timelines": [],
+        "ctype": "TimelineActionData"
+      },
+      "AnimationList": [],
+      "ObjectData": {
+        "Tag": 205,
+        "Children": [
+          {
+            "ClipAble": false,
+            "BackColorAlpha": 0,
+            "ComboBoxIndex": 1,
+            "SingleColor": {
+              "R": 0,
+              "G": 0,
+              "B": 0
+            },
+            "FirstColor": {
+              "R": 150,
+              "G": 200
+            },
+            "EndColor": {},
+            "ColorVector": {
+              "ScaleY": 1.0
+            },
+            "TouchEnable": true,
+            "AnchorPoint": {},
+            "Position": {
+              "X": 0.0,
+              "Y": 0.0
+            },
+            "Scale": {
+              "ScaleX": 1.0,
+              "ScaleY": 1.0
+            },
+            "CColor": {},
+            "IconVisible": false,
+            "PrePosition": {
+              "X": 0.0,
+              "Y": 0.0
+            },
+            "PreSize": {
+              "X": 1.0,
+              "Y": 1.0
+            },
+            "Tag": 206,
+            "Children": [
+              {
+                "FileData": {
+                  "Type": "Normal",
+                  "Path": "layerView/title_img.png",
+                  "Plist": ""
+                },
+                "Scale9OriginX": 145,
+                "Scale9OriginY": 74,
+                "Scale9Width": 151,
+                "Scale9Height": 77,
+                "AnchorPoint": {},
+                "Position": {
+                  "X": 155.2647,
+                  "Y": 741.386
+                },
+                "Scale": {
+                  "ScaleX": 1.0,
+                  "ScaleY": 1.0
+                },
+                "CColor": {},
+                "IconVisible": false,
+                "PrePosition": {
+                  "X": 0.207,
+                  "Y": 0.5558
+                },
+                "PreSize": {
+                  "X": 0.588,
+                  "Y": 0.1687
+                },
+                "LeftMargin": 155.2647,
+                "RightMargin": 153.7352,
+                "TopMargin": 367.614,
+                "BottomMargin": 741.386,
+                "Tag": 207,
+                "ActionTag": -1018672570,
+                "Size": {
+                  "X": 441.0,
+                  "Y": 225.0
+                },
+                "Name": "IMG_TITLE",
+                "ctype": "ImageViewObjectData"
+              },
+              {
+                "FontSize": 14,
+                "ButtonText": "",
+                "TextColor": {
+                  "R": 65,
+                  "G": 65,
+                  "B": 70
+                },
+                "DisabledFileData": {
+                  "Type": "Default",
+                  "Path": "Default/Button_Disable.png",
+                  "Plist": ""
+                },
+                "PressedFileData": {
+                  "Type": "Normal",
+                  "Path": "layerView/game_start.png",
+                  "Plist": ""
+                },
+                "NormalFileData": {
+                  "Type": "Normal",
+                  "Path": "layerView/game_start.png",
+                  "Plist": ""
+                },
+                "Scale9Enable": true,
+                "Scale9OriginX": 15,
+                "Scale9OriginY": 11,
+                "Scale9Width": 270,
+                "Scale9Height": 19,
+                "OutlineColor": {
+                  "G": 0,
+                  "B": 0
+                },
+                "ShadowColor": {
+                  "R": 110,
+                  "G": 110,
+                  "B": 110
+                },
+                "ShadowOffsetX": 2.0,
+                "ShadowOffsetY": -2.0,
+                "TouchEnable": true,
+                "AnchorPoint": {
+                  "ScaleX": 0.5,
+                  "ScaleY": 0.5
+                },
+                "Position": {
+                  "X": 375.2601,
+                  "Y": 428.6926
+                },
+                "Scale": {
+                  "ScaleX": 1.0,
+                  "ScaleY": 1.0
+                },
+                "CColor": {},
+                "IconVisible": false,
+                "PrePosition": {
+                  "X": 0.5003,
+                  "Y": 0.3214
+                },
+                "PreSize": {
+                  "X": 0.4,
+                  "Y": 0.0307
+                },
+                "LeftMargin": 225.2601,
+                "RightMargin": 224.7399,
+                "TopMargin": 884.8074,
+                "BottomMargin": 408.1926,
+                "Tag": 208,
+                "ActionTag": -63518240,
+                "Size": {
+                  "X": 300.0,
+                  "Y": 41.0
+                },
+                "Name": "BTN_START",
+                "ctype": "ButtonObjectData"
+              },
+              {
+                "FileData": {
+                  "Type": "PlistSubImage",
+                  "Path": "loading1.png",
+                  "Plist": "gameArts.plist"
+                },
+                "Scale9OriginX": 40,
+                "Scale9OriginY": 8,
+                "Scale9Width": 44,
+                "Scale9Height": 9,
+                "AnchorPoint": {
+                  "ScaleX": 0.5,
+                  "ScaleY": 0.5
+                },
+                "Position": {
+                  "X": 375.5335,
+                  "Y": 228.2761
+                },
+                "Scale": {
+                  "ScaleX": 1.5,
+                  "ScaleY": 1.5
+                },
+                "CColor": {},
+                "IconVisible": false,
+                "PrePosition": {
+                  "X": 0.5007,
+                  "Y": 0.1711
+                },
+                "PreSize": {
+                  "X": 0.1653,
+                  "Y": 0.0187
+                },
+                "LeftMargin": 313.5335,
+                "RightMargin": 312.4665,
+                "TopMargin": 1093.2239,
+                "BottomMargin": 215.7761,
+                "Tag": 210,
+                "ActionTag": -1095378215,
+                "Size": {
+                  "X": 124.0,
+                  "Y": 25.0
+                },
+                "Name": "IMG_LOAD",
+                "ctype": "ImageViewObjectData"
+              }
+            ],
+            "ActionTag": 1720922340,
+            "Size": {
+              "X": 750.0,
+              "Y": 1334.0
+            },
+            "Name": "Panel_Layer",
+            "ctype": "PanelObjectData"
+          }
+        ],
+        "Size": {
+          "X": 750.0,
+          "Y": 1334.0
+        },
+        "Name": "Layer",
+        "ctype": "LayerObjectData"
+      },
+      "UsedResources": [
+        "Default/Button_Disable.png",
+        "gameArts.plist",
+        "gameArts.png",
+        "layerView/game_start.png",
+        "layerView/title_img.png"
+      ],
+      "ctype": "GameFileData"
+    }
+  },
+  "Type": "Layer"
+}

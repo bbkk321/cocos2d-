@@ -9,17 +9,21 @@
     "renderMode" : 0,
     "engineDir":"frameworks/cocos2d-html5",
 
-    "modules" : ["cocos2d"],
+    "modules" : ["cocos2d", "extensions"],
 
     "jsList" : [
+        "src/resource.js",
         "src/global/AssetManager.js",
         "src/global/Global.js",
-        "src/view/demo.js",
+        "src/global/Constant.js",
+        "src/common/ViewBaseLayer.js",
+        "src/view/MainView.js",
+        "src/controller/MainController.js",
+        "src/component/StartLayer.js",
         "src/view/enemyPlane.js",
         "src/view/hero.js",
         "src/view/bullet.js",
         "src/util/runActionHelper.js",
-        "src/resource.js",
         "src/app.js"
     ]
 }

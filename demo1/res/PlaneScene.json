@@ -1,0 +1,465 @@
+{
+  "ID": "60cfd536-18a1-4718-9474-e1a3cfc6ff0e",
+  "Version": "3.10.0.0",
+  "Name": "PlaneScene",
+  "Content": {
+    "Content": {
+      "Animation": {
+        "Duration": 0,
+        "Speed": 1.0,
+        "Timelines": [],
+        "ctype": "TimelineActionData"
+      },
+      "AnimationList": [],
+      "ObjectData": {
+        "Tag": 193,
+        "Children": [
+          {
+            "ClipAble": false,
+            "BackColorAlpha": 0,
+            "ComboBoxIndex": 1,
+            "SingleColor": {
+              "R": 150,
+              "G": 200
+            },
+            "FirstColor": {
+              "R": 150,
+              "G": 200
+            },
+            "EndColor": {},
+            "ColorVector": {
+              "ScaleY": 1.0
+            },
+            "TouchEnable": true,
+            "AnchorPoint": {},
+            "Position": {
+              "X": -0.0001,
+              "Y": 0.0
+            },
+            "Scale": {
+              "ScaleX": 1.0,
+              "ScaleY": 1.0
+            },
+            "CColor": {},
+            "IconVisible": false,
+            "PrePosition": {
+              "X": 0.0,
+              "Y": 0.0
+            },
+            "PreSize": {
+              "X": 1.0,
+              "Y": 1.0
+            },
+            "LeftMargin": -0.0001,
+            "RightMargin": 0.0001,
+            "BottomMargin": 0.0,
+            "Tag": 203,
+            "Children": [
+              {
+                "FileData": {
+                  "Type": "PlistSubImage",
+                  "Path": "background_2.png",
+                  "Plist": "gameArts.plist"
+                },
+                "Scale9OriginX": 105,
+                "Scale9OriginY": 187,
+                "Scale9Width": 110,
+                "Scale9Height": 194,
+                "AnchorPoint": {},
+                "Position": {
+                  "X": 0.0,
+                  "Y": 0.0
+                },
+                "Scale": {
+                  "ScaleX": 1.0,
+                  "ScaleY": 1.0
+                },
+                "CColor": {},
+                "IconVisible": false,
+                "PrePosition": {
+                  "X": 0.0,
+                  "Y": 0.0
+                },
+                "PreSize": {
+                  "X": 1.0,
+                  "Y": 1.0
+                },
+                "Tag": 195,
+                "ActionTag": 677500947,
+                "Size": {
+                  "X": 750.0,
+                  "Y": 1334.0
+                },
+                "Name": "IMG_BG1",
+                "ctype": "ImageViewObjectData"
+              },
+              {
+                "FileData": {
+                  "Type": "PlistSubImage",
+                  "Path": "background_2.png",
+                  "Plist": "gameArts.plist"
+                },
+                "Scale9OriginX": 105,
+                "Scale9OriginY": 187,
+                "Scale9Width": 110,
+                "Scale9Height": 194,
+                "AnchorPoint": {},
+                "Position": {
+                  "X": 0.0,
+                  "Y": -1333.0
+                },
+                "Scale": {
+                  "ScaleX": 1.0,
+                  "ScaleY": 1.0
+                },
+                "CColor": {},
+                "IconVisible": false,
+                "PrePosition": {
+                  "X": 0.0,
+                  "Y": -0.9993
+                },
+                "PreSize": {
+                  "X": 1.0,
+                  "Y": 1.0
+                },
+                "TopMargin": 1333.0,
+                "BottomMargin": -1333.0,
+                "Tag": 196,
+                "ActionTag": -1146282814,
+                "Size": {
+                  "X": 750.0,
+                  "Y": 1334.0
+                },
+                "Name": "IMG_BG2",
+                "ctype": "ImageViewObjectData"
+              }
+            ],
+            "ActionTag": -947075868,
+            "Size": {
+              "X": 750.0,
+              "Y": 1334.0
+            },
+            "Name": "Panel_CONTENT",
+            "ctype": "PanelObjectData"
+          },
+          {
+            "ClipAble": false,
+            "BackColorAlpha": 0,
+            "ComboBoxIndex": 1,
+            "SingleColor": {
+              "R": 0,
+              "G": 0,
+              "B": 0
+            },
+            "FirstColor": {
+              "R": 150,
+              "G": 200
+            },
+            "EndColor": {},
+            "ColorVector": {
+              "ScaleY": 1.0
+            },
+            "TouchEnable": true,
+            "AnchorPoint": {},
+            "Position": {
+              "X": 0.0,
+              "Y": 0.0
+            },
+            "Scale": {
+              "ScaleX": 1.0,
+              "ScaleY": 1.0
+            },
+            "CColor": {},
+            "IconVisible": false,
+            "PrePosition": {
+              "X": 0.0,
+              "Y": 0.0
+            },
+            "PreSize": {
+              "X": 1.0,
+              "Y": 1.0
+            },
+            "Tag": 194,
+            "Children": [
+              {
+                "FontSize": 14,
+                "ButtonText": "",
+                "TextColor": {
+                  "R": 65,
+                  "G": 65,
+                  "B": 70
+                },
+                "DisabledFileData": {
+                  "Type": "Default",
+                  "Path": "Default/Button_Disable.png",
+                  "Plist": ""
+                },
+                "PressedFileData": {
+                  "Type": "PlistSubImage",
+                  "Path": "game_pause_hl.png",
+                  "Plist": "gameArts.plist"
+                },
+                "NormalFileData": {
+                  "Type": "PlistSubImage",
+                  "Path": "game_pause.png",
+                  "Plist": "gameArts.plist"
+                },
+                "Scale9OriginX": 15,
+                "Scale9OriginY": 11,
+                "Scale9Width": 10,
+                "Scale9Height": 8,
+                "OutlineColor": {
+                  "G": 0,
+                  "B": 0
+                },
+                "ShadowColor": {
+                  "R": 110,
+                  "G": 110,
+                  "B": 110
+                },
+                "ShadowOffsetX": 2.0,
+                "ShadowOffsetY": -2.0,
+                "TouchEnable": true,
+                "AnchorPoint": {},
+                "Position": {
+                  "X": 16.9283,
+                  "Y": 1245.3176
+                },
+                "Scale": {
+                  "ScaleX": 1.0,
+                  "ScaleY": 1.0
+                },
+                "CColor": {},
+                "IconVisible": false,
+                "PrePosition": {
+                  "X": 0.0226,
+                  "Y": 0.9335
+                },
+                "PreSize": {
+                  "X": 0.1067,
+                  "Y": 0.0525
+                },
+                "LeftMargin": 16.9283,
+                "RightMargin": 653.0717,
+                "TopMargin": 18.6824,
+                "BottomMargin": 1245.3176,
+                "Tag": 197,
+                "ActionTag": -1983194596,
+                "Size": {
+                  "X": 80.0,
+                  "Y": 70.0
+                },
+                "Name": "BTN_PASUE",
+                "ctype": "ButtonObjectData"
+              },
+              {
+                "IsCustomSize": true,
+                "FontSize": 50,
+                "LabelText": "0000",
+                "FontResource": {
+                  "Type": "Normal",
+                  "Path": "font/MarkerFelt.ttf",
+                  "Plist": ""
+                },
+                "OutlineColor": {
+                  "G": 0,
+                  "B": 0
+                },
+                "ShadowColor": {
+                  "R": 110,
+                  "G": 110,
+                  "B": 110
+                },
+                "ShadowOffsetX": 2.0,
+                "ShadowOffsetY": -2.0,
+                "AnchorPoint": {},
+                "Position": {
+                  "X": 103.5557,
+                  "Y": 1251.4099
+                },
+                "Scale": {
+                  "ScaleX": 1.0,
+                  "ScaleY": 1.0
+                },
+                "CColor": {
+                  "R": 0,
+                  "G": 0,
+                  "B": 0
+                },
+                "IconVisible": false,
+                "PrePosition": {
+                  "X": 0.1381,
+                  "Y": 0.9381
+                },
+                "PreSize": {
+                  "X": 0.2667,
+                  "Y": 0.0375
+                },
+                "LeftMargin": 103.5557,
+                "RightMargin": 446.4443,
+                "TopMargin": 32.5901,
+                "BottomMargin": 1251.4099,
+                "Tag": 198,
+                "ActionTag": -1104378100,
+                "Size": {
+                  "X": 200.0,
+                  "Y": 50.0
+                },
+                "Name": "SCORE_TXT",
+                "ctype": "TextObjectData"
+              },
+              {
+                "FontSize": 14,
+                "ButtonText": "",
+                "TextColor": {
+                  "R": 65,
+                  "G": 65,
+                  "B": 70
+                },
+                "DisabledFileData": {
+                  "Type": "Default",
+                  "Path": "Default/Button_Disable.png",
+                  "Plist": ""
+                },
+                "PressedFileData": {
+                  "Type": "PlistSubImage",
+                  "Path": "bomb.png",
+                  "Plist": "gameArts.plist"
+                },
+                "NormalFileData": {
+                  "Type": "PlistSubImage",
+                  "Path": "bomb.png",
+                  "Plist": "gameArts.plist"
+                },
+                "Scale9OriginX": 15,
+                "Scale9OriginY": 11,
+                "Scale9Width": 12,
+                "Scale9Height": 16,
+                "OutlineColor": {
+                  "G": 0,
+                  "B": 0
+                },
+                "ShadowColor": {
+                  "R": 110,
+                  "G": 110,
+                  "B": 110
+                },
+                "ShadowOffsetX": 2.0,
+                "ShadowOffsetY": -2.0,
+                "TouchEnable": true,
+                "AnchorPoint": {},
+                "Position": {
+                  "X": 10.0,
+                  "Y": 10.0
+                },
+                "Scale": {
+                  "ScaleX": 1.0,
+                  "ScaleY": 1.0
+                },
+                "CColor": {},
+                "IconVisible": false,
+                "PrePosition": {
+                  "X": 0.0133,
+                  "Y": 0.0075
+                },
+                "PreSize": {
+                  "X": 0.1093,
+                  "Y": 0.0585
+                },
+                "LeftMargin": 10.0,
+                "RightMargin": 658.0,
+                "TopMargin": 1246.0,
+                "BottomMargin": 10.0,
+                "Tag": 199,
+                "ActionTag": -974712174,
+                "Size": {
+                  "X": 82.0,
+                  "Y": 78.0
+                },
+                "Name": "BTN_BOMB",
+                "ctype": "ButtonObjectData"
+              },
+              {
+                "IsCustomSize": true,
+                "FontSize": 50,
+                "LabelText": "x1",
+                "FontResource": {
+                  "Type": "Normal",
+                  "Path": "font/MarkerFelt.ttf",
+                  "Plist": ""
+                },
+                "OutlineColor": {
+                  "G": 0,
+                  "B": 0
+                },
+                "ShadowColor": {
+                  "R": 110,
+                  "G": 110,
+                  "B": 110
+                },
+                "ShadowOffsetX": 2.0,
+                "ShadowOffsetY": -2.0,
+                "AnchorPoint": {},
+                "Position": {
+                  "X": 98.7435,
+                  "Y": 22.7326
+                },
+                "Scale": {
+                  "ScaleX": 1.0,
+                  "ScaleY": 1.0
+                },
+                "CColor": {
+                  "R": 0,
+                  "G": 0,
+                  "B": 0
+                },
+                "IconVisible": false,
+                "PrePosition": {
+                  "X": 0.1317,
+                  "Y": 0.017
+                },
+                "PreSize": {
+                  "X": 0.1333,
+                  "Y": 0.0375
+                },
+                "LeftMargin": 98.7435,
+                "RightMargin": 551.2565,
+                "TopMargin": 1261.2673,
+                "BottomMargin": 22.7326,
+                "Tag": 204,
+                "ActionTag": -1863686560,
+                "Size": {
+                  "X": 100.0,
+                  "Y": 50.0
+                },
+                "Name": "BOMB_TXT",
+                "ctype": "TextObjectData"
+              }
+            ],
+            "ActionTag": 20796544,
+            "Size": {
+              "X": 750.0,
+              "Y": 1334.0
+            },
+            "Name": "Panel_UI",
+            "ctype": "PanelObjectData"
+          }
+        ],
+        "Size": {
+          "X": 750.0,
+          "Y": 1334.0
+        },
+        "Name": "Scene",
+        "ctype": "SingleNodeObjectData"
+      },
+      "UsedResources": [
+        "Default/Button_Disable.png",
+        "font/MarkerFelt.ttf",
+        "gameArts.plist",
+        "gameArts.png"
+      ],
+      "ctype": "GameFileData"
+    }
+  },
+  "Type": "Scene"
+}
