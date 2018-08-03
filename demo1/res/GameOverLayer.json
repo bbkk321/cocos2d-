@@ -1,0 +1,375 @@
+{
+  "ID": "e6daeb3e-bf07-4c72-b934-d3d3037372bb",
+  "Version": "3.10.0.0",
+  "Name": "GameOverLayer",
+  "Content": {
+    "Content": {
+      "Animation": {
+        "Duration": 0,
+        "Speed": 1.0,
+        "Timelines": [],
+        "ctype": "TimelineActionData"
+      },
+      "AnimationList": [],
+      "ObjectData": {
+        "Tag": 122,
+        "Children": [
+          {
+            "ClipAble": false,
+            "BackColorAlpha": 102,
+            "SingleColor": {
+              "R": 150,
+              "G": 200
+            },
+            "FirstColor": {
+              "R": 150,
+              "G": 200
+            },
+            "EndColor": {},
+            "ColorVector": {
+              "ScaleY": 1.0
+            },
+            "TouchEnable": true,
+            "AnchorPoint": {},
+            "Position": {
+              "X": 0.0,
+              "Y": -0.0001
+            },
+            "Scale": {
+              "ScaleX": 1.0,
+              "ScaleY": 1.0
+            },
+            "CColor": {},
+            "IconVisible": false,
+            "PrePosition": {
+              "X": 0.0,
+              "Y": 0.0
+            },
+            "PreSize": {
+              "X": 1.0,
+              "Y": 1.0
+            },
+            "BottomMargin": -0.0001,
+            "Tag": 123,
+            "Children": [
+              {
+                "FontSize": 48,
+                "LabelText": "历史最高:",
+                "OutlineColor": {
+                  "G": 0,
+                  "B": 0
+                },
+                "ShadowColor": {
+                  "R": 110,
+                  "G": 110,
+                  "B": 110
+                },
+                "ShadowOffsetX": 2.0,
+                "ShadowOffsetY": -2.0,
+                "AnchorPoint": {
+                  "ScaleX": 0.5,
+                  "ScaleY": 0.5
+                },
+                "Position": {
+                  "X": 114.9926,
+                  "Y": 1252.1699
+                },
+                "Scale": {
+                  "ScaleX": 1.0,
+                  "ScaleY": 1.0
+                },
+                "CColor": {
+                  "R": 143,
+                  "G": 146,
+                  "B": 147
+                },
+                "IconVisible": false,
+                "PrePosition": {
+                  "X": 0.1533,
+                  "Y": 0.9387
+                },
+                "PreSize": {
+                  "X": 0.288,
+                  "Y": 0.036
+                },
+                "LeftMargin": 6.9926,
+                "RightMargin": 527.0074,
+                "TopMargin": 57.8301,
+                "BottomMargin": 1228.1699,
+                "Tag": 124,
+                "ActionTag": -248166016,
+                "Size": {
+                  "X": 216.0,
+                  "Y": 48.0
+                },
+                "Name": "HIGHTEST_TITLE_TXT",
+                "ctype": "TextObjectData"
+              },
+              {
+                "IsCustomSize": true,
+                "FontSize": 48,
+                "LabelText": "000000",
+                "FontResource": {
+                  "Type": "Normal",
+                  "Path": "font/MarkerFelt.ttf",
+                  "Plist": ""
+                },
+                "OutlineColor": {
+                  "G": 0,
+                  "B": 0
+                },
+                "ShadowColor": {
+                  "R": 110,
+                  "G": 110,
+                  "B": 110
+                },
+                "ShadowOffsetX": 2.0,
+                "ShadowOffsetY": -2.0,
+                "AnchorPoint": {},
+                "Position": {
+                  "X": 234.1997,
+                  "Y": 1227.4633
+                },
+                "Scale": {
+                  "ScaleX": 1.0,
+                  "ScaleY": 1.0
+                },
+                "CColor": {
+                  "R": 0,
+                  "G": 0,
+                  "B": 0
+                },
+                "IconVisible": false,
+                "PrePosition": {
+                  "X": 0.3123,
+                  "Y": 0.9201
+                },
+                "PreSize": {
+                  "X": 0.4,
+                  "Y": 0.036
+                },
+                "LeftMargin": 234.1997,
+                "RightMargin": 215.8003,
+                "TopMargin": 58.5367,
+                "BottomMargin": 1227.4633,
+                "Tag": 126,
+                "ActionTag": 1740055306,
+                "Size": {
+                  "X": 300.0,
+                  "Y": 48.0
+                },
+                "Name": "HIGHTEST_TXT",
+                "ctype": "TextObjectData"
+              },
+              {
+                "FontSize": 48,
+                "LabelText": "恭喜！您的最终成绩是",
+                "OutlineColor": {
+                  "G": 0,
+                  "B": 0
+                },
+                "ShadowColor": {
+                  "R": 110,
+                  "G": 110,
+                  "B": 110
+                },
+                "ShadowOffsetX": 2.0,
+                "ShadowOffsetY": -2.0,
+                "AnchorPoint": {
+                  "ScaleX": 0.5,
+                  "ScaleY": 0.5
+                },
+                "Position": {
+                  "X": 378.4466,
+                  "Y": 816.9822
+                },
+                "Scale": {
+                  "ScaleX": 1.0,
+                  "ScaleY": 1.0
+                },
+                "CColor": {
+                  "R": 143,
+                  "G": 146,
+                  "B": 147
+                },
+                "IconVisible": false,
+                "PrePosition": {
+                  "X": 0.5046,
+                  "Y": 0.6124
+                },
+                "PreSize": {
+                  "X": 0.64,
+                  "Y": 0.036
+                },
+                "LeftMargin": 138.4466,
+                "RightMargin": 131.5534,
+                "TopMargin": 493.0178,
+                "BottomMargin": 792.9822,
+                "Tag": 127,
+                "ActionTag": 761945618,
+                "Size": {
+                  "X": 480.0,
+                  "Y": 48.0
+                },
+                "Name": "CURRENT_TITLE_TXT",
+                "ctype": "TextObjectData"
+              },
+              {
+                "IsCustomSize": true,
+                "FontSize": 48,
+                "LabelText": "000000",
+                "FontResource": {
+                  "Type": "Normal",
+                  "Path": "font/MarkerFelt.ttf",
+                  "Plist": ""
+                },
+                "HorizontalAlignmentType": "HT_Center",
+                "OutlineColor": {
+                  "G": 0,
+                  "B": 0
+                },
+                "ShadowColor": {
+                  "R": 110,
+                  "G": 110,
+                  "B": 110
+                },
+                "ShadowOffsetX": 2.0,
+                "ShadowOffsetY": -2.0,
+                "AnchorPoint": {},
+                "Position": {
+                  "X": 225.8177,
+                  "Y": 712.5974
+                },
+                "Scale": {
+                  "ScaleX": 1.0,
+                  "ScaleY": 1.0
+                },
+                "CColor": {
+                  "R": 0,
+                  "G": 0,
+                  "B": 0
+                },
+                "IconVisible": false,
+                "PrePosition": {
+                  "X": 0.3011,
+                  "Y": 0.5342
+                },
+                "PreSize": {
+                  "X": 0.4,
+                  "Y": 0.036
+                },
+                "LeftMargin": 225.8177,
+                "RightMargin": 224.1823,
+                "TopMargin": 573.4026,
+                "BottomMargin": 712.5974,
+                "Tag": 128,
+                "ActionTag": 11286627,
+                "Size": {
+                  "X": 300.0,
+                  "Y": 48.0
+                },
+                "Name": "CURRENT_TXT",
+                "ctype": "TextObjectData"
+              },
+              {
+                "FontSize": 14,
+                "ButtonText": "",
+                "TextColor": {
+                  "R": 65,
+                  "G": 65,
+                  "B": 70
+                },
+                "DisabledFileData": {
+                  "Type": "Default",
+                  "Path": "Default/Button_Disable.png",
+                  "Plist": ""
+                },
+                "PressedFileData": {
+                  "Type": "Normal",
+                  "Path": "layerView/game_over.png",
+                  "Plist": ""
+                },
+                "NormalFileData": {
+                  "Type": "Normal",
+                  "Path": "layerView/game_over.png",
+                  "Plist": ""
+                },
+                "Scale9Enable": true,
+                "Scale9OriginX": 15,
+                "Scale9OriginY": 11,
+                "Scale9Width": 270,
+                "Scale9Height": 19,
+                "OutlineColor": {
+                  "G": 0,
+                  "B": 0
+                },
+                "ShadowColor": {
+                  "R": 110,
+                  "G": 110,
+                  "B": 110
+                },
+                "ShadowOffsetX": 2.0,
+                "ShadowOffsetY": -2.0,
+                "TouchEnable": true,
+                "AnchorPoint": {
+                  "ScaleX": 0.5,
+                  "ScaleY": 0.5
+                },
+                "Position": {
+                  "X": 376.3885,
+                  "Y": 426.9173
+                },
+                "Scale": {
+                  "ScaleX": 1.0,
+                  "ScaleY": 1.0
+                },
+                "CColor": {},
+                "IconVisible": false,
+                "PrePosition": {
+                  "X": 0.5019,
+                  "Y": 0.32
+                },
+                "PreSize": {
+                  "X": 0.4,
+                  "Y": 0.0307
+                },
+                "LeftMargin": 226.3885,
+                "RightMargin": 223.6115,
+                "TopMargin": 886.5826,
+                "BottomMargin": 406.4173,
+                "Tag": 129,
+                "ActionTag": -1297906822,
+                "Size": {
+                  "X": 300.0,
+                  "Y": 41.0
+                },
+                "Name": "BTN_GAMEOVER",
+                "ctype": "ButtonObjectData"
+              }
+            ],
+            "ActionTag": -944858721,
+            "Size": {
+              "X": 750.0,
+              "Y": 1334.0
+            },
+            "Name": "Panel_BG",
+            "ctype": "PanelObjectData"
+          }
+        ],
+        "Size": {
+          "X": 750.0,
+          "Y": 1334.0
+        },
+        "Name": "Layer",
+        "ctype": "LayerObjectData"
+      },
+      "UsedResources": [
+        "Default/Button_Disable.png",
+        "font/MarkerFelt.ttf",
+        "layerView/game_over.png"
+      ],
+      "ctype": "GameFileData"
+    }
+  },
+  "Type": "Layer"
+}

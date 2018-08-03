@@ -8,6 +8,7 @@ var MainView = ViewBaseLayer.extend({
     initView:function () {
         this._super();
         this.Panel_CONTENT = this.resouceNode["Panel_CONTENT"];
+        this.Panel_CONTENT.setTouchEnabled(true);
         this.IMG_BG1 = this.resouceNode["IMG_BG1"];
         this.IMG_BG2 = this.resouceNode["IMG_BG2"];
         this.BTN_PASUE = this.resouceNode["BTN_PASUE"];
@@ -16,5 +17,5 @@ var MainView = ViewBaseLayer.extend({
         this.BOMB_TXT = this.resouceNode["BOMB_TXT"];
         this.Panel_UI = this.resouceNode["Panel_UI"];
         this.Panel_UI.setVisible(false);
-    }
+    },
 });

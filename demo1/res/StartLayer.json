@@ -31,6 +31,8 @@
             "ColorVector": {
               "ScaleY": 1.0
             },
+            "Scale9Width": 1,
+            "Scale9Height": 1,
             "TouchEnable": true,
             "AnchorPoint": {},
             "Position": {
@@ -83,7 +85,7 @@
                   "Y": 0.1687
                 },
                 "LeftMargin": 155.2647,
-                "RightMargin": 153.7352,
+                "RightMargin": 153.7353,
                 "TopMargin": 367.614,
                 "BottomMargin": 741.386,
                 "Tag": 207,
@@ -176,44 +178,44 @@
                   "Path": "loading1.png",
                   "Plist": "gameArts.plist"
                 },
-                "Scale9OriginX": 40,
-                "Scale9OriginY": 8,
-                "Scale9Width": 44,
-                "Scale9Height": 9,
+                "BlendFunc": {
+                  "Src": 1,
+                  "Dst": 771
+                },
                 "AnchorPoint": {
                   "ScaleX": 0.5,
                   "ScaleY": 0.5
                 },
                 "Position": {
-                  "X": 375.5335,
-                  "Y": 228.2761
+                  "X": 375.3714,
+                  "Y": 295.1132
                 },
                 "Scale": {
-                  "ScaleX": 1.5,
-                  "ScaleY": 1.5
+                  "ScaleX": 1.0,
+                  "ScaleY": 1.0
                 },
                 "CColor": {},
                 "IconVisible": false,
                 "PrePosition": {
-                  "X": 0.5007,
-                  "Y": 0.1711
+                  "X": 0.5005,
+                  "Y": 0.2212
                 },
                 "PreSize": {
-                  "X": 0.1653,
-                  "Y": 0.0187
+                  "X": 0.0613,
+                  "Y": 0.0345
                 },
-                "LeftMargin": 313.5335,
-                "RightMargin": 312.4665,
-                "TopMargin": 1093.2239,
-                "BottomMargin": 215.7761,
-                "Tag": 210,
-                "ActionTag": -1095378215,
+                "LeftMargin": 313.3714,
+                "RightMargin": 312.6286,
+                "TopMargin": 1026.3868,
+                "BottomMargin": 282.6132,
+                "Tag": 121,
+                "ActionTag": 959211889,
                 "Size": {
                   "X": 124.0,
                   "Y": 25.0
                 },
-                "Name": "IMG_LOAD",
-                "ctype": "ImageViewObjectData"
+                "Name": "SP_LOAD",
+                "ctype": "SpriteObjectData"
               }
             ],
             "ActionTag": 1720922340,

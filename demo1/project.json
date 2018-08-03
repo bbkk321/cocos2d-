@@ -13,13 +13,14 @@
 
     "jsList" : [
         "src/resource.js",
-        "src/global/AssetManager.js",
         "src/global/Global.js",
         "src/global/Constant.js",
         "src/common/ViewBaseLayer.js",
         "src/view/MainView.js",
         "src/controller/MainController.js",
         "src/component/StartLayer.js",
+        "src/component/PauseLayer.js",
+        "src/component/GameOverLayer.js",
         "src/view/enemyPlane.js",
         "src/view/hero.js",
         "src/view/bullet.js",

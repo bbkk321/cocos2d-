@@ -17,7 +17,6 @@
           {
             "ClipAble": false,
             "BackColorAlpha": 0,
-            "ComboBoxIndex": 1,
             "SingleColor": {
               "R": 150,
               "G": 200
@@ -30,6 +29,8 @@
             "ColorVector": {
               "ScaleY": 1.0
             },
+            "Scale9Width": 1,
+            "Scale9Height": 1,
             "TouchEnable": true,
             "AnchorPoint": {},
             "Position": {
@@ -52,7 +53,6 @@
             },
             "LeftMargin": -0.0001,
             "RightMargin": 0.0001,
-            "BottomMargin": 0.0,
             "Tag": 203,
             "Children": [
               {
@@ -145,7 +145,6 @@
           {
             "ClipAble": false,
             "BackColorAlpha": 0,
-            "ComboBoxIndex": 1,
             "SingleColor": {
               "R": 0,
               "G": 0,
@@ -159,6 +158,8 @@
             "ColorVector": {
               "ScaleY": 1.0
             },
+            "Scale9Width": 1,
+            "Scale9Height": 1,
             "TouchEnable": true,
             "AnchorPoint": {},
             "Position": {
@@ -424,7 +425,7 @@
                 },
                 "LeftMargin": 98.7435,
                 "RightMargin": 551.2565,
-                "TopMargin": 1261.2673,
+                "TopMargin": 1261.2675,
                 "BottomMargin": 22.7326,
                 "Tag": 204,
                 "ActionTag": -1863686560,

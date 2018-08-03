@@ -7,6 +7,7 @@ var res = {
 var res_json = {
     startLayer_json:"res/StartLayer.json",
     pauseLayer_json:"res/PauseLayer.json",
+    gameoverLayer_json:"res/GameOverLayer.json",
     planeScene_json:"res/PlaneScene.json"
 };
 
