@@ -14,8 +14,8 @@ var StartLayer = ViewBaseLayer.extend({
             var frame = cc.spriteFrameCache.getSpriteFrame("loading"+i+".png");
             actionArr.push(frame);
         }
-        var runAHelper = new RunActionHelper();
-        var animate = runAHelper.createAnimationByPlist(actionArr, 0.3);
+        var animation = cc.Animation.create(actionArr, 0.3);
+        var animate = cc.animate(animation);
         this.SP_LOAD.runAction(animate.repeatForever());
     },
     addEvent:function () {

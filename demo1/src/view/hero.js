@@ -10,13 +10,24 @@ var heroPlane = cc.Sprite.extend({
             var frame = cc.spriteFrameCache.getSpriteFrame("hero_fly_"+i+".png");
             playerActionArray.push(frame);
         }
-        var runAHelper = new RunActionHelper();
-        var animate = runAHelper.createAnimationByPlist(playerActionArray, 0.1);
+        var animation = cc.Animation.create(playerActionArray, 0.1);
+        var animate = cc.animate(animation);
         sp = new cc.Sprite(spriteFrameCache.getSpriteFrame(planeName));
         sp.setAnchorPoint(cc.p(0,0));
         this.width = sp.width;
         this.height = sp.height;
         this.scaleX = this.scaleY = Global.getSingle().GLOBAL_SCALE;
         this.runAction(animate.repeatForever());
+        return true;
     },
+    playAni:function (num,url,callback) {
+        var arr = [];
+        for(var i = 1;i<=num;i++){
+            var frame = cc.spriteFrameCache.getSpriteFrame(url+i+".png");
+            arr.push(frame);
+        }
+        var animation = cc.Animation.create(arr, 0.1);
+        var animate = cc.animate(animation);
+        this.runAction(cc.sequence(animate,cc.callFunc(callback,this)));
+    }
 });

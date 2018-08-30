@@ -41,7 +41,6 @@ var ViewBaseLayer = cc.Layer.extend({
         cc.sys.garbageCollect();
         this.initAllNode(this.widget);
         //添加备案信息
-        this.addRecordweb();
         this.initView();
         this.addEvent();
     },
@@ -121,52 +120,4 @@ var ViewBaseLayer = cc.Layer.extend({
             }
         }
     },
-
-    //添加备案信息
-    addRecordweb:function () {
-        var str1 = "© Copyright 2012 广州大思教育科技发展有限公司. All Rights Reserved. ICP备案证书号:";
-        var str2 = "粤ICP备06021163号";
-        var str3 = "________________";
-        // cc.log(this.layerJson);
-        var jsonArr=["IndexScene.json","CourseScene.json","MainScene.json","HallScene.json","LearnScene.json","PictureBookLayer.json","MonthRankList.json"];
-        var isShow = false;
-        for(var o in jsonArr){
-            var obj = jsonArr[o];
-            if(this.layerJson.indexOf(obj)>-1){
-                isShow = true;
-                break;
-            }
-        }
-        if(isShow){
-            var s = cc.director.getWinSize();
-            var l1 = new cc.LabelTTF(str1,"Thonburi", 16);
-            l1.setColor(cc.color(0,0,0));
-            this.widget.addChild(l1,100);
-            l1.x = s.width /2-100;
-            l1.y = 10;
-
-            var l2 = new ccui.Text();
-            l2.string = str2;
-            l2.setColor(cc.color(0,128,0));
-            this.widget.addChild(l2,100);
-            l2.x = s.width /2+300;
-            l2.y = 10;
-            l2.setTouchEnabled(true);
-            l2.addClickEventListener(function () {
-                var url = "http://www.miitbeian.gov.cn";
-                cc.sys.openURL(url);
-            });
-
-            var l3 = new ccui.Text();
-            l3.string = str3;
-            l3.setColor(cc.color(0,0,0));
-            this.widget.addChild(l3,100);
-            l3.x = s.width /2+300;
-            l3.y = 10;
-
-        }
-    },
-
-
-
 });

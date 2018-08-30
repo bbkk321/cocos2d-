@@ -24,7 +24,6 @@
         "src/view/enemyPlane.js",
         "src/view/hero.js",
         "src/view/bullet.js",
-        "src/util/runActionHelper.js",
         "src/app.js"
     ]
 }

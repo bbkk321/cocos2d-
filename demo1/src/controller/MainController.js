@@ -1,5 +1,4 @@
 var MainController = MainView.extend({
-    __cnt:null,
     bg1:null,
     score:null,
     plane:null,
@@ -36,7 +35,6 @@ var MainController = MainView.extend({
         return true;
     },
     initData:function(){
-        __cnt = 1;
         score = 0;
         bigPlan = 0;
         smallPlan = 0;
@@ -230,7 +228,6 @@ var MainController = MainView.extend({
         if (bigPlan>500) {
             var foePlane = this.makeBigFoePlane();
             this.Panel_CONTENT.addChild(foePlane,3);
-            foePlane.scaleX = foePlane.scaleY = Global.getSingle().GLOBAL_SCALE;
             this.enemyArr.push(foePlane);
             bigPlan = 0;
         }
@@ -238,7 +235,6 @@ var MainController = MainView.extend({
         if (mediumPlan>400) {
             var foePlane = this.makeMediumFoePlane();
             this.Panel_CONTENT.addChild(foePlane,3);
-            foePlane.scaleX = foePlane.scaleY = Global.getSingle().GLOBAL_SCALE;
             this.enemyArr.push(foePlane);
             mediumPlan = 0;
         }
@@ -246,40 +242,28 @@ var MainController = MainView.extend({
         if (smallPlan>45) {
             var foePlane = this.makeSmallFoePlane();
             this.Panel_CONTENT.addChild(foePlane,3);
-            foePlane.scaleX = foePlane.scaleY = Global.getSingle().GLOBAL_SCALE;
             this.enemyArr.push(foePlane);
             smallPlan = 0;
         }
     },
     //造大飞机
     makeBigFoePlane:function () {
-        var bigFoePlane = "enemy2_fly_1.png";
-        var bigFoePlaneActionArray = [];
         //大飞机敌机动画
-        var bigFoePlane = new enemy(bigFoePlane);
+        var bigFoePlane = Enemy.Create("enemy2_fly_1.png",2,10,Math.random()*1+1);
         bigFoePlane.setPosition(cc.p(Math.random()*size.width,size.height));
-        for(var i = 1;i<=2;i++){
-            var frame = cc.spriteFrameCache.getSpriteFrame("enemy2_fly_"+i+".png");
-            bigFoePlaneActionArray.push(frame);
-        }
-        var runAHelper = new RunActionHelper();
-        var animate = runAHelper.createAnimationByPlist(bigFoePlaneActionArray, 0.1);
-        bigFoePlane.setData(2,10,Math.random()*1+1,++__cnt);
-        bigFoePlane.runAction(animate.repeatForever());
+        bigFoePlane.playAni(2,"enemy2_fly_",1);
         return bigFoePlane;
     },
     //造中飞机
     makeMediumFoePlane:function () {
-        var mediumFoePlane = new enemy("enemy3_fly_1.png");
+        var mediumFoePlane = Enemy.Create("enemy3_fly_1.png",3,5,Math.random()*1+2);
         mediumFoePlane.setPosition(cc.p(Math.random()*size.width,size.height));
-        mediumFoePlane.setData(3,5,Math.random()*1+2,++__cnt);
         return mediumFoePlane;
     },
     //造小飞机
     makeSmallFoePlane:function () {
-        var smallFoePlane = new enemy("enemy1_fly_1.png");
+        var smallFoePlane = Enemy.Create("enemy1_fly_1.png",1,1,Math.random()*2+2);
         smallFoePlane.setPosition(cc.p(Math.random()*size.width,size.height));
-        smallFoePlane.setData(1,1,Math.random()*2+2,++__cnt);
         return smallFoePlane;
     },
     //造炸弹奖励
@@ -316,26 +300,25 @@ var MainController = MainView.extend({
     resetBullet:function(index){
         if(!index) return;
         var bullet = this.bulletArr[index];
-        this.Panel_CONTENT.removeChild(bullet);
+        cc.pool.putInPool(bullet);
         this.bulletArr.splice(index,1);
-        //isChangeBullet = false;
     },
     //制造子弹
     madeBullet:function () {
         if(this.isChangeBullet){
-            var bullet1 = new Bullet((!isBigBullet)?"bullet1.png":"bullet2.png");
+            var bullet1 = Bullet.Create("bullet1.png");
             this.Panel_CONTENT.addChild(bullet1);
             bullet1.setScale(Global.getSingle().GLOBAL_SCALE);
             bullet1.setPosition(cc.p(this.plane.getPositionX()-40,this.plane.getPositionY()+50));
             this.bulletArr.push(bullet1);
 
-            var bullet2 = new Bullet((!isBigBullet)?"bullet1.png":"bullet2.png");
+            var bullet2 = Bullet.Create("bullet1.png");
             this.Panel_CONTENT.addChild(bullet2);
             bullet2.setScale(Global.getSingle().GLOBAL_SCALE);
             bullet2.setPosition(cc.p(this.plane.getPositionX()+40,this.plane.getPositionY()+50));
             this.bulletArr.push(bullet2);
         }else{
-            var bullet = new Bullet((!isBigBullet)?"bullet1.png":"bullet2.png");
+            var bullet = Bullet.Create("bullet1.png");
             this.Panel_CONTENT.addChild(bullet);
             bullet.setScale(Global.getSingle().GLOBAL_SCALE);
             bullet.setPosition(cc.p(this.plane.getPositionX(),this.plane.getPositionY()+50));
@@ -353,7 +336,7 @@ var MainController = MainView.extend({
                 if(cc.rectIntersectsRect(bulletRec,foePlaneRec)){
                     //cc.log("碰撞了！");
                     this.resetBullet(j);
-                    foePlane.hp -= (isBigBullet?2:1);
+                    foePlane.hp -= 1;
                     this.fowPlaneHitAnimation(foePlane);
                     if(foePlane.hp<=0){
                         this.fowPlaneBlowupAnimation(foePlane);
@@ -397,27 +380,11 @@ var MainController = MainView.extend({
     fowPlaneHitAnimation:function (foePlane) {
         if (foePlane.planeType == 3) {
             if (foePlane.hp <= 5) {
-                var arr = [];
-                for (var i = 1; i <= 2; i++) {
-                    var frame = cc.spriteFrameCache.getSpriteFrame("enemy3_hit_" + i + ".png");
-                    arr.push(frame);
-                }
-                var runAHelper = new RunActionHelper();
-                var animate = runAHelper.createAnimationByPlist(arr, 0.1);
-                foePlane.stopAllActions();
-                foePlane.runAction(animate);
+                foePlane.playAni(2,"enemy3_hit_",0);
             }
         } else if (foePlane.planeType == 2) {
             if (foePlane.hp <= 3) {
-                var arr2 = [];
-                for (var i = 1; i <= 1; i++) {
-                    var frame = cc.spriteFrameCache.getSpriteFrame("enemy2_hit_" + i + ".png");
-                    arr2.push(frame);
-                }
-                var runAHelper = new RunActionHelper();
-                var animate = runAHelper.createAnimationByPlist(arr2, 0.1);
-                foePlane.stopAllActions();
-                foePlane.runAction(animate);
+                foePlane.playAni(1,"enemy2_hit_",0);
             }
         }
     },
@@ -428,40 +395,25 @@ var MainController = MainView.extend({
             forSum = 4;
             score+=6000;
         }else if (foePlane.planeType  == 2) {
-            score+=30000;
             forSum = 7;
+            score+=30000;
         }else if (foePlane.planeType  == 1) {
             forSum = 4;
             score+=1000;
         }
         this.SCORE_TXT.setString(score.toString());
-        foePlane.stopAllActions();
-        var arr = [];
-        for (var i = 1; i<=forSum ; i++ ) {
-            var frame = cc.spriteFrameCache.getSpriteFrame("enemy"+foePlane.planeType+"_blowup_" + i + ".png");
-            arr.push(frame);
-        }
-        foePlane.removeAllChildren();
-        var runAHelper = new RunActionHelper();
-        var animate = runAHelper.createAnimationByPlist(arr, 0.1);
-        foePlane.runAction(cc.sequence(animate,cc.callFunc(this.blowupEnd,this,foePlane)));
-    },
-    blowupEnd:function (foePlane) {
-        if(foePlane == this.plane){
-            this.gameOver();
-        }
-        foePlane.removeFromParent();
+        var url = "enemy"+foePlane.planeType+"_blowup_";
+        cc.log("爆炸url:"+url,"forSum:"+forSum);
+        foePlane.playAni(forSum,url,2,function () {
+            cc.pool.putInPool(foePlane);
+        }.bind(this));
     },
     //主角飞机爆炸
     playerBlowupAnimation:function () {
-        var arr = [];
-        for (var i = 1; i<=4 ; i++ ) {
-            var frame = cc.spriteFrameCache.getSpriteFrame("hero_blowup_" + i + ".png");
-            arr.push(frame);
-        }
-        var runAHelper = new RunActionHelper();
-        var animate = runAHelper.createAnimationByPlist(arr, 0.1);
-        this.plane.runAction(cc.sequence(animate,cc.callFunc(this.blowupEnd,this,this.plane)));
+        this.plane.playAni(4,"hero_blowup_",function () {
+            this.gameOver();
+            this.Panel_CONTENT.removeChild(this.plane);
+        }.bind(this));
     },
     reward:function() {
         if(score>=this.bombRewardScore*this.bombCount){
@@ -512,6 +464,7 @@ var MainController = MainView.extend({
         }.bind(this));
         this.Panel_UI.setVisible(false);
         this.BOMB_TXT.setString("x1");
+        cc.pool.drainAllPools();
     },
     //重置
     restartFn:function () {
@@ -529,5 +482,6 @@ var MainController = MainView.extend({
         this.initData();
         this.SCORE_TXT.setString("0000");
         this.BOMB_TXT.setString("x1");
+        cc.pool.drainAllPools();
     }
 });

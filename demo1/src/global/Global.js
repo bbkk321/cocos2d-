@@ -10,12 +10,12 @@
         getScore:function (key) {
             return cc.sys.localStorage.getItem(key);
         },
-        setCustomEvent(key,data){
+        setCustomEvent:function(key,data){
             var event = new cc.EventCustom(key);
             event.setUserData(data);
             cc.eventManager.dispatchEvent(event);
         },
-        getCustomEvent(key,callback){
+        getCustomEvent:function(key,callback){
             this.LISTENER = cc.EventListener.create({
                 event: cc.EventListener.CUSTOM,
                 eventName: key,
@@ -23,7 +23,7 @@
             });
             cc.eventManager.addListener(this.LISTENER,1);
         },
-        clearCustomEvent(){
+        clearCustomEvent:function(){
             if(this.LISTENER!=null){
                 cc.eventManager.removeListener(this.LISTENER);
                 this.LISTENER = null;
