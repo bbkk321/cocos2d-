@@ -7,6 +7,8 @@ var Enemy = cc.Sprite.extend({
     hp:0,
     //速度
     speed:0,
+    //爆炸动画
+    isBlow:false,
     ctor:function(url,_planeType,_hp,_speed){
         this._super();
         this.initData(url,_planeType, _hp, _speed);
@@ -26,19 +28,15 @@ var Enemy = cc.Sprite.extend({
     },
     unuse: function () {
         this.retain();//if in jsb
-        //this.setVisible(false);
+        this.isBlow = false;
         this.planeType = 0;
         this.hp = 0;
         this.speed = 0;
-        //this.sp.stopAllActions();
-        //this.sp.removeAllChildren();
         this.sp.removeFromParent();
-        //this.removeChild(this.sp);
-        //this.sp = null;
         this.removeFromParent();
     },
     reuse: function (url, _planeType, _hp, _speed) {
-        //this.setVisible(true);
+        this.isBlow = false;
         this.initData(url,_planeType, _hp, _speed);
     },
     playAni:function (num,url,type,callback) {
@@ -49,6 +47,7 @@ var Enemy = cc.Sprite.extend({
         }
         var animation = cc.Animation.create(arr, 0.1);
         var animate = cc.animate(animation);
+        this.sp.stopAllActions();
         switch (type) {
             case 0:
                 this.sp.runAction(animate);

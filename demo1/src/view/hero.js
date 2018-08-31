@@ -1,6 +1,8 @@
 //主角色类
 var heroPlane = cc.Sprite.extend({
     sp:null,
+    isBlow:false,
+    isHeroBlow:false,
     ctor:function () {
         this._super();
         var planeName = "hero_fly_1.png";
@@ -28,6 +30,7 @@ var heroPlane = cc.Sprite.extend({
         }
         var animation = cc.Animation.create(arr, 0.1);
         var animate = cc.animate(animation);
+        this.stopAllActions();
         this.runAction(cc.sequence(animate,cc.callFunc(callback,this)));
     }
 });

@@ -338,7 +338,8 @@ var MainController = MainView.extend({
                     this.resetBullet(j);
                     foePlane.hp -= 1;
                     this.fowPlaneHitAnimation(foePlane);
-                    if(foePlane.hp<=0){
+                    if(foePlane.hp<=0&&foePlane.isBlow===false){
+                        foePlane.isBlow = true;
                         this.fowPlaneBlowupAnimation(foePlane);
                         this.enemyArr.splice(i,1);
                     }
@@ -347,11 +348,14 @@ var MainController = MainView.extend({
         }
         //主角跟敌机
         var planeRec = this.plane.getBoundingBox();
-        for(var k=0;k<this.enemyArr.length;k++){
-            var foePlane = this.enemyArr[k];
-            var foePlaneRec = foePlane.getBoundingBox();
-            if(cc.rectIntersectsRect(planeRec,foePlaneRec)){
-                this.playerBlowupAnimation();
+        if(this.plane.isHeroBlow===false){
+            for(var k=0;k<this.enemyArr.length;k++){
+                var foePlane = this.enemyArr[k];
+                var foePlaneRec = foePlane.getBoundingBox();
+                if(cc.rectIntersectsRect(planeRec,foePlaneRec)){
+                    this.plane.isHeroBlow = true;
+                    this.playerBlowupAnimation();
+                }
             }
         }
         //主角跟炸弹奖励
@@ -405,14 +409,16 @@ var MainController = MainView.extend({
         var url = "enemy"+foePlane.planeType+"_blowup_";
         cc.log("爆炸url:"+url,"forSum:"+forSum);
         foePlane.playAni(forSum,url,2,function () {
+            foePlane.isBlow = true;
             cc.pool.putInPool(foePlane);
         }.bind(this));
     },
     //主角飞机爆炸
     playerBlowupAnimation:function () {
         this.plane.playAni(4,"hero_blowup_",function () {
-            this.gameOver();
             this.Panel_CONTENT.removeChild(this.plane);
+            this.plane.isHeroBlow = false;
+            this.gameOver();
         }.bind(this));
     },
     reward:function() {
